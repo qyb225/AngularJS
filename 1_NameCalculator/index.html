@@ -13,14 +13,18 @@
     <div class="container">
         <h1>Name Calculator</h1>
         <div ng-controller="NameCalculatorController">
-            <div class="row">   
+            <div>
+                <img ng-src="./images/img{{numOfImg}}.png" id="avatar">
+                <div class="btn btn-success" ng-click="avatarChange();">Change Avatar</div>
+            </div>
+            <div class="row">
                 <div class="col-sm-5">
                     Your name: 
                     <input type="text" class="form-control" ng-model="name" ng-keyup="displayNumeric();" />
                 </div>
             </div>
             <div>
-                Total numeric value of <span>{{name}}</span> is: 
+                Total numeric value of <span>{{getName();}}</span> is: 
                 <h3>{{totalValue}}</h3>
             </div>
         </div>

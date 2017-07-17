@@ -6,3 +6,8 @@ body {
 span {
     font-weight: bold;
 }
+
+#avatar {
+    height: 140px;
+    width: 140px;
+}
