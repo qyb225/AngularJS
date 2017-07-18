@@ -86,3 +86,29 @@ function CounterController($scope, $timeout) {
         console.log("Digest Loop fired: ", ++$scope.loopCounter);
     });
 }
+
+/*3. Data Binding*/
+app.controller("BindingController", BindingController);
+BindingController.$inject = ["$scope"];
+
+function BindingController($scope) {
+    $scope.firstName = "Yibin";
+    //$scope.fullName = "";
+
+    $scope.showNumOfWachers = function () {
+        console.log("Number of watchers: ", $scope.$$watchersCount);
+    };
+
+    $scope.setFullName = function () {
+        /*init fullName*/
+        $scope.fullName = $scope.firstName + " " + "Qiu";
+    };
+
+    $scope.logFirstName = function () {
+        console.log("My first name is: ", $scope.firstName);
+    };
+
+    $scope.logFullName = function () {
+        console.log("My full name is: ", $scope.fullName);
+    };
+}

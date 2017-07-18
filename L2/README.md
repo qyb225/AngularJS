@@ -120,3 +120,27 @@ $scope.upDelayCounter = function () {
     }, 1000);
 };
 ```
+
+---
+
+## 3. Data Binding
+
+### 2-way
+
+```html
+<input type="text" ng-model="someModel" />
+```
+
+### 1-way
+
+```html
+<p>Messages: {{ msg }} </p>
+```
+
+### 1-time
+
+```html
+<p>Name: {{ ::fullname }} </p>
+```
+
+1-time Binding 只在初始化时绑定并更新UI，在未初始化时，\$scope中存在变量的watcher，一旦变量初始化，会删除该变量在watchers队列中绑定的watcher。
