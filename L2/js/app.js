@@ -35,11 +35,12 @@ function CustomFilterController($scope, lovesFilter) {
 
 /*2. Digest Cycle*/
 app.controller("CounterController", CounterController);
-CounterController.$inject = ["$scope"];
+CounterController.$inject = ["$scope", "$timeout"];
 
-function CounterController($scope) {
+function CounterController($scope, $timeout) {
     $scope.onceCounter = 0;
     $scope.counter = 0;
+    $scope.delayCounter = 0;
     $scope.name = "Qubic";
     $scope.loopCounter = 0;
 
@@ -54,6 +55,27 @@ function CounterController($scope) {
     $scope.upCounter = function () {
         ++$scope.counter;
     };
+
+    $scope.upDelayCounter = function () {
+        /*原生JavaScript setTimeout 调用digest*/
+        // setTimeout(function () {
+        //     /*不推荐的写法：angular无法得知异常*/
+        //     ++$scope.delayCounter;
+        //     /*手动进入digest loop做dirty check*/
+        //     $scope.$digest();
+
+        //     /*推荐的写法：可以handle 异常，会自动调用$scope.$digest();*/
+        //     $scope.$apply(function () {
+        //         ++$scope.delayCounter;
+        //     });
+        // }, 1000);
+
+        /*Angular使用自己的timeout*/
+        $timeout(function () {
+            ++$scope.delayCounter;
+        }, 1000);
+    };
+
 
     // $scope.$watch("onceCounter", function (oldValue, newValue) {
     //     console.log("Once counter oldValue: ", oldValue);
