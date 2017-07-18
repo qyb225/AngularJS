@@ -34,3 +34,33 @@ function CustomFilterController($scope, lovesFilter) {
 }
 
 /*2. Digest Cycle*/
+app.controller("CounterController", CounterController);
+CounterController.$inject = ["$scope"];
+
+function CounterController($scope) {
+    $scope.onceCounter = 0;
+    $scope.counter = 0;
+    $scope.name = "Qubic";
+    $scope.loopCounter = 0;
+
+    $scope.showNumOfWachers = function () {
+        console.log("Number of watchers: ", $scope.$$watchersCount);
+    };
+
+    $scope.upCounterOnce = function () {
+        $scope.onceCounter = 1;
+    };
+
+    $scope.upCounter = function () {
+        ++$scope.counter;
+    };
+
+    // $scope.$watch("onceCounter", function (oldValue, newValue) {
+    //     console.log("Once counter oldValue: ", oldValue);
+    //     console.log("Once counter newValue: ", newValue);
+    // });
+
+    $scope.$watch(function () {
+        console.log("Digest Loop fired: ", ++$scope.loopCounter);
+    });
+}

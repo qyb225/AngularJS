@@ -27,6 +27,21 @@
                 <p class="col-md-6">BIG TRUTH: {{ sayLoveMessages() | truth : "healthy" : "junk" | uppercase; }} </p>
             </div>
         </div>
+        <div ng-controller="CounterController">
+            <h2>2. The Digest Cycle</h2>
+            <div>
+                <button class="btn btn-default" ng-click="showNumOfWachers();">Num of watchers</button>
+                <button class="btn btn-primary" ng-click="upCounterOnce();">Up onceCounter</button>
+                <button class="btn btn-success" ng-click="upCounter();">Up Conter</button>
+            </div>
+            <div>
+                <input ng-model="name" />
+            </div>
+            <div>
+                <p>Once counter: {{ onceCounter }} </p>
+                <p>Regular counter: {{ counter }} </p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
