@@ -15,14 +15,17 @@
             <h2>ng-repeat: Shopping List</h2>
             <div>
                 <h3>ShoppingList1</h3>
+                <div>
+                    <input type="text" ng-model="searchValue" placeholder="Search" />
+                </div>
                 <ul>
-                    <li ng-repeat="item in shoppingList1">{{ item }}</li>
+                    <li ng-repeat="item in shoppingList1 | filter : searchValue">{{ item }}</li>
                 </ul>
             </div>
             <div>
                 <h3>ShoppingList2</h3>
                 <ul>
-                    <li ng-repeat="item in shoppingList2">{{ $index + 1 }}. {{ item.name }} : {{ item.cost | currency : "$" : 2 }}</li>
+                    <li ng-repeat="item in shoppingList2 | filter : searchValue">{{ $index + 1 }}. {{ item.name }} : {{ item.cost | currency : "$" : 2 }}</li>
                 </ul>
                 <div>
                     <input type="text" placeholder="Item name" ng-model="newItemName" />
