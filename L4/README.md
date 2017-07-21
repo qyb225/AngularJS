@@ -10,7 +10,7 @@
 
 语句：
 ```js
-var A = Object(B);
+var A = Object.create(B);
 ```
 
 该语句会将B对象属性添加至A的**\__proto\__**中，所以A可以沿着原型链访问到B的属性，这就是 **prototype继承** ，如果A中定义了B已有的属性，则masking了B中的属性，不会沿着原型链上升，直接覆盖原属性；如果A中没有的属性之中的属性被修改，则B中一样被修改，例如：
@@ -20,7 +20,7 @@ var B = {
     obj: { objValue: "parent obj" }
 };
 
-var A = Object(B); //prototype inherit
+var A = Object.create(B); //prototype inherit
 
 A.value = "child";  //Masking
 A.obj.objValue = "child obj";  //Modify B, too
