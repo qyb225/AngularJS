@@ -1,0 +1,14 @@
+body {
+    font-family: consolas;
+    font-size: large;
+}
+
+span {
+    font-weight: bold;
+}
+
+.delete {
+    color: red;
+    background-color: transparent;
+    cursor: pointer;
+}
