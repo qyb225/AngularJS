@@ -25,7 +25,7 @@ var A = Object(B); //prototype inherit
 A.value = "child";  //Masking
 A.obj.objValue = "child obj";  //Modify B, too
 
-console.log(A.vlaue); //"child"
+console.log(A.value); //"child"
 console.log(B.value); //"parent"
 console.log(B.obj.objValue); //"child obj"
 ```
