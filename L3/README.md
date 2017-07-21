@@ -1,1 +1,1 @@
-# Looping, Controller as Synax
+# Looping: ng-repeat
