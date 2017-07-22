@@ -89,8 +89,7 @@ app.controller("ShoppingListController2",
             list2.newItemCost = "";
         } catch(error) {
             list2.errorMessage = error.message;
-        }
-        
+        } 
     };
 
     list2.removeItem = function (index) {
@@ -122,3 +121,46 @@ function ShoppingListService(maxItems) {
         return items;
     };
 }
+
+
+/*3. Provider*/
+app.controller("ProviderController", 
+     ["ShoppingListProviderService", function (ShoppingListProviderService) {
+    var list = this;
+
+    list.items = ShoppingListProviderService.getItems();
+    list.newItemName = "";
+    list.newItemCost = "";
+
+    list.addToList = function () {
+        try {
+            ShoppingListProviderService.addToList(list.newItemName, list.newItemCost);
+            list.newItemName = "";
+            list.newItemCost = "";
+        } catch(error) {
+            list.errorMessage = error.message;
+        } 
+    };
+
+    list.removeItem = function (index) {
+        ShoppingListProviderService.removeItem(index);
+        list.errorMessage = "";
+    };
+}]);
+
+app.provider("ShoppingListProviderService", function () {
+    var provider = this;
+
+    provider.defaults = {
+        maxItems: 10
+    };
+
+    provider.$get = function () {
+        return new ShoppingListService(provider.defaults.maxItems);
+    };
+});
+
+app.config(["ShoppingListProviderServiceProvider", 
+             function (ShoppingListProviderServiceProvider) {
+    ShoppingListProviderServiceProvider.defaults.maxItems = 2;
+}]);

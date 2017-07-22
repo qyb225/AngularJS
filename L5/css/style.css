@@ -12,3 +12,8 @@ span {
     background-color: transparent;
     cursor: pointer;
 }
+
+.error {
+    color: red;
+    font-style: 1.3em;
+}

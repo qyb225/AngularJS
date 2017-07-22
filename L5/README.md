@@ -1,4 +1,4 @@
-#  Service and Factory
+#  Service, Factory and Provider
 
 ---
 
@@ -109,4 +109,53 @@ app.controller("Controller2", ["Factory2", function (Factory2) {
     };
 }]);
 
+```
+
+---
+
+## 3. Provider
+
+**Provider** 是唯一一种你可以传进 .config() 函数的 service。当你想要在 service 对象启用之前，先进行模块范围的配置，那就应该用 provider。
+
+```js
+var Service = function (arg) {
+    var innerValue = "xxx";
+    
+    /*逻辑函数*/
+    this.someLogic = function () {
+         doSomething(innerValue);
+    };
+    
+    /*数据*/
+    this.getData = function () {
+        return innerValue;
+    };
+};
+
+/*注册Provider*/
+app.provider("myService", function () {
+    var provider = this;
+
+    provider.prop = "xxx";
+
+    provider.$get = function () {
+        return new Service(provider.prop);
+    };
+});
+
+/*在所有controller之前执行*/
+app.config(["myServiceProvider", function (myServiceProvider) {
+    myServiceProvider.prop = "yyy";
+}]);
+
+/*provider service 注入controller*/
+app.controller("Controller", ["myService", function (myService) {
+    /*myService 即为调用了$get之后的对象，调用Service的方法*/
+    var viewModel = this;
+    viewModel.data = myService.getData();
+    
+    viewModel.anotherLogic = function () {
+        myService.someLogic();
+    };
+}]);
 ```

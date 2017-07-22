@@ -62,8 +62,29 @@
                             <span class="delete" ng-click="list2.removeItem($index);">X</span>
                         </li>
                     </ul>
-                    <p> {{ list2.errorMessage }} </p>
+                    <p class="error"> {{ list2.errorMessage }} </p>
                 </div>
+            </div>
+        </div>
+        <h2>Provider</h2>
+        <div id="List" ng-controller="ProviderController as list">
+            <h3>ShoppingList3</h3>
+            <div>
+                <input type="text" placeholder="Item name" ng-model="list.newItemName" />
+                <input type="text" placeholder="Item cost" ng-model="list.newItemCost" />
+                <button class="btn btn-success" ng-click="list.addToList();">+</button>
+            </div>
+            <div>
+                <p>List2: </p>
+                <ul>
+                    <li ng-repeat="item in list.items">
+                        {{ item.name }}: {{ item.cost | currency : "$" : 2 }}
+                        <span class="delete" ng-click="list.removeItem($index);">X</span>
+                    </li>
+                </ul>
+                <p ng-if="list.errorMessage" class="error">ng-if Error: {{ list.errorMessage }} </p>
+                <p ng-show="list.errorMessage" class="error">ng-show Error: {{ list.errorMessage }} </p>
+                <p ng-hide="list.errorMessage" class="error">ng-hide No Error</p>
             </div>
         </div>
     </div>
