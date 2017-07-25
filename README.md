@@ -5,4 +5,5 @@ AngularJS learning repository
 * L2: Filter, Digest Cycle and Data Binding
 * L3: Looping
 * L4: Controller as Synax
-* L5: Service and Factory
+* L5: Service, Factory and Provider 
+* L6: Promise
