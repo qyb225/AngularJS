@@ -7,3 +7,4 @@ AngularJS learning repository
 * L4: Controller as Synax
 * L5: Service, Factory and Provider 
 * L6: Promise
+* L7: $http, Ajax
