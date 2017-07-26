@@ -8,3 +8,4 @@ AngularJS learning repository
 * L5: Service, Factory and Provider 
 * L6: Promise
 * L7: $http, Ajax
+* L8: Custom Directive
