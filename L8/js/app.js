@@ -1,12 +1,31 @@
 var app = angular.module("ShoppingListApp", []);
 
+var ShoppingListDirectiveController = function () {
+    var list = this;
+
+    list.cookiesInList = function () {
+        for (var i = 0; i < list.items.length; ++i) {
+            var name = list.items[i].name;
+
+            if (name.toLowerCase().indexOf("cookie") !== -1) {
+                return true;
+            }
+        }
+        return false;
+    };
+};
+
 app.directive("shoppingList", function () {
     var ddo = {
         scope: {
-            list: "=templateList"
+            items: "=",
+            removeFromList: "&removeItem"
         },
         restrict: "E",
         templateUrl: "shoppingList.html",
+        controller: ShoppingListDirectiveController,
+        controllerAs: "list",
+        bindToController: true
     };
     return ddo;
 });
@@ -46,6 +65,7 @@ app.controller("ShoppingListController1",
     var serviceInstance = ShoppingListFactory();
 
     list1.items = serviceInstance.getItems();
+    list1.lastRemove = "";
 
     list1.newItemName = "";
     list1.newItemCost = "";
@@ -61,6 +81,7 @@ app.controller("ShoppingListController1",
     };
 
     list1.removeFromList = function (index) {
+        list1.lastRemove = list1.items[index].name;
         serviceInstance.removeItem(index);
     };
 }]).controller("ShoppingListController2", 

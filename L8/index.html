@@ -24,7 +24,8 @@
                 </div>
                 <div>
                     <p>List1: </p>
-                    <shopping-list template-list="list1"></shopping-list>
+                    <p>Last Remove: {{ list1.lastRemove }}</p>
+                    <shopping-list items="list1.items" remove-item="list1.removeFromList(index);"></shopping-list>
                 </div>
             </div>
             <div id="List2" class="col-sm-6" ng-controller="ShoppingListController2 as list2">
@@ -36,7 +37,7 @@
                 </div>
                 <div>
                     <p>List2: </p>
-                    <shopping-list template-list="list2"></shopping-list>
+                    <shopping-list items="list2.items" remove-item="list2.removeFromList(index);"></shopping-list>
                 </div>
             </div>
         </div>

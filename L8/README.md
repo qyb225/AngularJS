@@ -222,3 +222,52 @@ app.directive('dirInput', function () {
 ```
 
 ![scope = {=}](./images/scope_isolate_oneway.gif)
+
+---
+
+## Directive controller 和 scope 函数传递 "&"：
+
+
+**app.js**
+
+```js
+app.controller("Controller", function () {
+    var parentCtrl = this;
+    
+    parentCtrl.parentMethod = function (arg1) {
+        //do something...
+    };
+});
+
+app.directive('myDirective', function () {
+    var ddo = {
+        restrict: "E",
+        templateUrl: "template.html",
+        scope: {
+            /*directive 中的 dirCtrl.dirMethod() 方法通过上层 dir-method="someMethod();" 传入*/
+            dirMethod: "&" 
+        },
+        controller: directiveController,
+        bindToController: true,
+        controllerAs: "dirCtrl"
+    };
+
+    return ddo;
+});
+```
+
+**index.html**
+
+```html
+<div ng-controller="Controller as parentCtrl">
+    <my-directive dir-method="parentCtrl.parentMethod(arg);"></my-directive>
+</div>
+```
+
+**template.html**
+
+```html
+<button ng-click="dirCtrl.dirMethod({arg : 0});"></button>
+```
+
+注意：两个html中的arg需一样，在template中传入值
