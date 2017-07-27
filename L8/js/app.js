@@ -1,14 +1,12 @@
 var app = angular.module("ShoppingListApp", []);
 
-app.directive("listItemDescription", function () {
+app.directive("shoppingList", function () {
     var ddo = {
-        template: "{{ item.name }}: {{ item.cost | currency : '$' : 2 }}"
-    };
-
-    return ddo;
-}).directive("listItem", function () {
-    var ddo = {
-        templateUrl: "listItem.html"
+        scope: {
+            list: "=templateList"
+        },
+        restrict: "E",
+        templateUrl: "shoppingList.html",
     };
     return ddo;
 });
@@ -20,7 +18,7 @@ var ShoppingListService = function (maxItems) {
         return items;
     };
 
-    this.addItems = function (newItemName, newItemCost) {
+    this.addItem = function (newItemName, newItemCost) {
         if (maxItems == undefined || items.length < maxItems) {
             items.push({
                 name: newItemName,
@@ -29,6 +27,10 @@ var ShoppingListService = function (maxItems) {
         } else {
             throw new Error("Max items " + maxItems + " reached.");
         }
+    };
+
+    this.removeItem = function (i) {
+        items.splice(i, 1);
     };
 };
 
@@ -50,12 +52,16 @@ app.controller("ShoppingListController1",
 
     list1.addToList = function () {
         try {
-            serviceInstance.addItems(list1.newItemName, list1.newItemCost);
+            serviceInstance.addItem(list1.newItemName, list1.newItemCost);
             list1.newItemName = "";
             list1.newItemCost = "";
         } catch(error) {
             alert(error.message);
         }
+    };
+
+    list1.removeFromList = function (index) {
+        serviceInstance.removeItem(index);
     };
 }]).controller("ShoppingListController2", 
         ["ShoppingListFactory", function(ShoppingListFactory) {
@@ -69,11 +75,15 @@ app.controller("ShoppingListController1",
 
     list2.addToList = function () {
         try {
-            serviceInstance.addItems(list2.newItemName, list2.newItemCost);
+            serviceInstance.addItem(list2.newItemName, list2.newItemCost);
             list2.newItemName = "";
             list2.newItemCost = "";
         } catch(error) {
             alert(error.message);
         }
+    };
+
+    list2.removeFromList = function (index) {
+        serviceInstance.removeItem(index);
     };
 }]);

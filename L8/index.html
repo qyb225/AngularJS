@@ -24,9 +24,7 @@
                 </div>
                 <div>
                     <p>List1: </p>
-                    <ul>
-                        <list-item ng-repeat="item in list1.items"></list-item>
-                    </ul>
+                    <shopping-list template-list="list1"></shopping-list>
                 </div>
             </div>
             <div id="List2" class="col-sm-6" ng-controller="ShoppingListController2 as list2">
@@ -38,9 +36,7 @@
                 </div>
                 <div>
                     <p>List2: </p>
-                    <ul>
-                        <list-item ng-repeat="item in list2.items"></list-item>
-                    </ul>
+                    <shopping-list template-list="list2"></shopping-list>
                 </div>
             </div>
         </div>
