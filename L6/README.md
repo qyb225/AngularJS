@@ -17,19 +17,19 @@
 
 小宝不辱使命，说外面阳光明媚，万里无云，这个promise was resolved（小宝信守承诺），爹就可以收拾行装，钓鱼去了。
 
-![](http://www.lupaworld.com/data/attachment/portal/201311/18/104723e15ymqhmwmmz92zm.jpg)
+![](./images/weather_good.jpg)
 
 **B计划： 小宝日观天象，阴转小雨的节奏**
 
 小宝依然不辱使命，但是天公不作美，promise was resolved，但是孩儿他爹觉得还是搁家呆着吧。
 
-![](http://www.lupaworld.com/data/attachment/portal/201311/18/104724lrsdt0a4gsgyzsaa.jpg)
+![](./images/weather_bad.jpg)
 
 **C计划：天象诡谲，小宝无法做出天气走势判断**
 
 小宝败兴而归，云雾重重，遮蔽了视线，不敢妄言天气走势，小宝走的时候立下承诺说要给他爹预报天气，但是没有成功，我们说promise was rejected！孩儿他爹决定小心驶得万年船，还是在家吧。
 
-![](http://www.lupaworld.com/data/attachment/portal/201311/18/104724fbmkqbpaqu9a9aqb.jpg)
+![](./images/weather_unknown.jpg)
 
 ----
 
