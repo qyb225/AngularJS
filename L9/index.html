@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>L9</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <!-- <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="../angular/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+</head>
+<body ng-app="ShoppingListApp">
+    <div class="container">
+        <h1>L9</h1>
+        <div id="component">
+            <h2>Component</h2>
+            <div id="List1" class="col-sm-6" ng-controller="ShoppingListController as list1">
+                <h3>ShoppingList</h3>
+                <div>
+                    <input type="text" placeholder="Item name" ng-model="list1.newItemName" />
+                    <input type="text" placeholder="Item cost" ng-model="list1.newItemCost" />
+                    <button class="btn btn-success" ng-click="list1.addToList();">+</button>
+                </div>
+                <div>
+                    <p>List1: </p>
+                    <p>Last Remove: {{ list1.lastRemove }}</p>
+                    <shopping-list items="list1.items" remove-item="list1.removeFromList(index);">
+                    </shopping-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
