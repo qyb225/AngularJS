@@ -1,7 +1,8 @@
+<div ng-transclude class="info"></div>
 <ul>
     <li ng-repeat="item in list.items">
         {{ item.name }}: {{ item.cost | currency : '$' : 2 }}
         <span class="delete" ng-click="list.removeFromList({index: $index});">X</span>
     </li>
 </ul>
-<div class="delete" ng-if="list.cookiesInList();">WARNING: COOKIE IN THE LIST!</div>
+<div class="delete">WARNING: COOKIE IN THE LIST!</div>

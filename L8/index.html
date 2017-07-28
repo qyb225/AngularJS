@@ -6,6 +6,7 @@
     <title>L8</title>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
     <script src="../angular/angular.min.js"></script>
     <script src="./js/app.js"></script>
 </head>
@@ -25,7 +26,9 @@
                 <div>
                     <p>List1: </p>
                     <p>Last Remove: {{ list1.lastRemove }}</p>
-                    <shopping-list items="list1.items" remove-item="list1.removeFromList(index);"></shopping-list>
+                    <shopping-list items="list1.items" remove-item="list1.removeFromList(index);">
+                        {{ list1.info }}
+                    </shopping-list>
                 </div>
             </div>
             <div id="List2" class="col-sm-6" ng-controller="ShoppingListController2 as list2">
@@ -37,7 +40,9 @@
                 </div>
                 <div>
                     <p>List2: </p>
-                    <shopping-list items="list2.items" remove-item="list2.removeFromList(index);"></shopping-list>
+                    <shopping-list items="list2.items" remove-item="list2.removeFromList(index);">
+                        {{ list2.info }}
+                    </shopping-list>
                 </div>
             </div>
         </div>

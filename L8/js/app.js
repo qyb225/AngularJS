@@ -15,6 +15,25 @@ var ShoppingListDirectiveController = function () {
     };
 };
 
+var ShoppingListDirectiveLink = function (scope, element, attrs, controller) {
+    var displayWarning = function() {
+        var warningElem = element.find("div.delete");
+        warningElem.fadeIn(200);
+    };
+
+    var hiddenWarning = function () {
+        var warningElem = element.find("div.delete");
+        warningElem.fadeOut(100);
+    };
+    scope.$watch('list.cookiesInList()', function (newValue, oldValue) {
+        if (newValue) {
+            displayWarning();
+        } else {
+            hiddenWarning();
+        }
+    });
+};
+
 app.directive("shoppingList", function () {
     var ddo = {
         scope: {
@@ -25,7 +44,9 @@ app.directive("shoppingList", function () {
         templateUrl: "shoppingList.html",
         controller: ShoppingListDirectiveController,
         controllerAs: "list",
-        bindToController: true
+        bindToController: true,
+        link: ShoppingListDirectiveLink,
+        transclude: true
     };
     return ddo;
 });
@@ -70,6 +91,8 @@ app.controller("ShoppingListController1",
     list1.newItemName = "";
     list1.newItemCost = "";
 
+    list1.info = "Unlimited!";
+
     list1.addToList = function () {
         try {
             serviceInstance.addItem(list1.newItemName, list1.newItemCost);
@@ -93,6 +116,8 @@ app.controller("ShoppingListController1",
     
     list2.newItemName = "";
     list2.newItemCost = "";
+
+    list2.info = "Limited!";
 
     list2.addToList = function () {
         try {

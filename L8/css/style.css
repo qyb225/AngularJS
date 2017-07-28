@@ -14,3 +14,9 @@ span {
     font-size: medium;
     font-weight: bold;
 }
+
+.info {
+    color: lightgreen;
+    font-style: italic;
+    font-size: larger;
+}

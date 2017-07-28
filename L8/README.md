@@ -225,7 +225,7 @@ app.directive('dirInput', function () {
 
 ---
 
-## Directive controller 和 scope 函数传递 "&"：
+## 4. Directive controller 和 scope 函数传递 "&"：
 
 
 **app.js**
@@ -271,3 +271,79 @@ app.directive('myDirective', function () {
 ```
 
 注意：两个html中的arg需一样，在template中传入值
+
+## 4. Directive link
+
+Directive 中的 **link** 可以用来操作 **DOM** 元素。
+
+声明如下：
+
+```js
+var directiveLink = function (scope, element, attrs, controller) {
+    /*
+     * scope 和 $scope 一样，区别在于没有依赖注入
+     * element 是所有元素，可以用element.find("div") 找到，如果先导入了jquery，拥有jquery方法
+     */
+};
+
+app.directive('myDirective', function () {
+    var ddo = {
+        restrict: "E",
+        templateUrl: "template.html",
+        scope: {
+            dirMethod: "&" 
+        },
+        controller: directiveController,
+        bindToController: true,
+        controllerAs: "dirCtrl",
+
+        link: directiveLink //link
+    };
+
+    return ddo;
+});
+```
+
+---
+
+## 5. Directive transclude
+
+将ddo中的transclude 属性设置为 **true**，则可以在父html中向指令添加东西。
+
+```js
+app.directive('myDirective', function () {
+    var ddo = {
+        restrict: "E",
+        templateUrl: "template.html",
+        controller: directiveController,
+        bindToController: true,
+        controllerAs: "dirCtrl",
+
+        transclude: true //Here
+    };
+
+    return ddo;
+});
+```
+
+**index.html**
+
+```html
+<div ng-controller="ParentController as parentCtrl">
+    <my-directive>
+        {{ parentCtrl.prop }}
+    </my-directive>
+</div>
+
+```
+
+**template.html**
+
+```html
+<div>
+    {{ dirCtrl.prop }}
+</div>
+<div ng-transclude>
+    <!-- {{ parentCtrl.prop }} inject here -->
+</div>
+```
