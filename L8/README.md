@@ -272,7 +272,10 @@ app.directive('myDirective', function () {
 
 注意：两个html中的arg需一样，在template中传入值
 
-## 4. Directive link
+
+---
+
+## 5. Directive link
 
 Directive 中的 **link** 可以用来操作 **DOM** 元素。
 
@@ -306,7 +309,7 @@ app.directive('myDirective', function () {
 
 ---
 
-## 5. Directive transclude
+## 6. Directive transclude
 
 将ddo中的transclude 属性设置为 **true**，则可以在父html中向指令添加东西。
 
