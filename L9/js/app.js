@@ -10,8 +10,10 @@ angular.module('ShoppingListApp', [])
     }
 });
 
-function ShoppingListComponentController() {
+ShoppingListComponentController.$inject = ['$scope', '$element'];
+function ShoppingListComponentController($scope, $element) {
     var $ctrl = this;
+    var totalItem;
 
     $ctrl.cookieInList = function () {
         for (var i = 0; i < $ctrl.items.length; ++i) {
@@ -27,6 +29,39 @@ function ShoppingListComponentController() {
     $ctrl.remove = function (i) {
         $ctrl.removeFromList({ index: i });
     };
+
+    $ctrl.$onInit = function () {
+        totalItem = 0;
+        // console.log("We are in $onInit();");
+    };
+
+    $ctrl.$doCheck = function () {
+        if (totalItem != $ctrl.items.length) {
+            totalItem = $ctrl.items.length;
+            console.log("List changes");
+            if ($ctrl.cookieInList()) {
+                console.log("Find COOKIE");
+                var warningElem = $element.find('div.delete');
+                warningElem.fadeIn(900);
+            } else {
+                console.log("No cookies");
+                var warningElem = $element.find('div.delete');
+                warningElem.fadeOut(900);
+            }
+        }
+    }
+
+    // $ctrl.$postLink = function () {
+    //     $scope.$watch('$ctrl.cookieInList()', function (newValue, oldValue) {
+    //         if (newValue) {
+    //             var warningElem = $element.find('div.delete');
+    //             warningElem.fadeIn(900);
+    //         } else {
+    //             var warningElem = $element.find('div.delete');
+    //             warningElem.fadeOut(900);
+    //         }
+    //     });
+    // };
 }
 
 ShoppingListController.$inject = ['ShoppingListService'];
