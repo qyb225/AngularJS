@@ -9,3 +9,5 @@ AngularJS learning repository
 * L6: Promise
 * L7: $http, Ajax
 * L8: Custom Directive
+* L9: Component
+* L10: Event System
