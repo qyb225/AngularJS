@@ -1,0 +1,8 @@
+<ul>
+    <li ng-repeat="item in $ctrl.items">
+        {{ item.name }}: {{ item.cost | currency : '$' : 2 }}
+        <span class="delete" ng-click="$ctrl.removeItem({ index : $index });">X</span>
+    </li>
+</ul>
+
+<div class="warning">WARNING: COOKIE IN THE LIST!</div>
