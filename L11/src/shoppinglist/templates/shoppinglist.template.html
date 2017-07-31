@@ -1,0 +1,5 @@
+<ul>
+    <li ng-repeat="item in $ctrl.items">
+        <a ui-sref="itemDetail({itemId: $index})">{{ item.name }}: {{ item.cost | currency : '$' : 2 }}</a>
+    </li>
+</ul>
