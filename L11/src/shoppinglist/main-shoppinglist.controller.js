@@ -1,10 +1,8 @@
 angular.module('ShoppingListApp')
 .controller('MainListController', MainListController);
 
-MainListController.$inject = ['ShoppingListService'];
-function MainListController(ShoppingListService) {
+MainListController.$inject = ['items'];
+function MainListController(items) {
     var mainList = this;
-    ShoppingListService.getItems().then(function (items) {
-        mainList.items = items;
-    });
+    mainList.items = items;
 }

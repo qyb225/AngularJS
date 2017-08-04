@@ -1,1 +1,1 @@
-angular.module('ShoppingListApp', ['ui.router']);
+angular.module('ShoppingListApp', ['ui.router', 'Spinner']);

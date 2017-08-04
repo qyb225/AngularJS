@@ -1,7 +1,7 @@
 angular.module('ShoppingListApp')
 .service('ShoppingListService', ShoppingListService);
 
-ShoppingListService.$inject('$q', '$timeout');
+ShoppingListService.$inject = ['$q', '$timeout'];
 function ShoppingListService($q, $timeout) {
     var items = [];
     items.push({
@@ -23,7 +23,7 @@ function ShoppingListService($q, $timeout) {
     this.getItems = function () {
         var deferred = $q.defer();
         $timeout(function () {
-            deferred.resolve(items)
+            deferred.resolve(items);
         }, 1000);
         return deferred.promise;
     };
