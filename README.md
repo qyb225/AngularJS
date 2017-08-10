@@ -11,3 +11,9 @@ AngularJS learning repository
 * L8: Custom Directive
 * L9: Component
 * L10: Event System
+* L11: ui-router
+* L12: Form
+
+---
+
+[**Final Assignment**](https://qyb225.github.io/AngularJS/)
