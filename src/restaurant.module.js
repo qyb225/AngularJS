@@ -1,6 +1,9 @@
 "use strict";
 
 angular.module('RestaurantApp', ['public'])
-.config(['$urlRouterProvider', function ($urlRouterProvider) {
+.config(config);
+
+config.$inject = ['$urlRouterProvider'];
+function config($urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-}]);
+}
